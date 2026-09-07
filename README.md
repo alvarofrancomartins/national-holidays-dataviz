@@ -6,8 +6,6 @@ The data consists of **195 countries** (actually, 193 UN members + Holy See & Pa
 
 ![National holidays heatmap](holidays_heatmap_2025.png)
 
-Darker cells mean more countries share that holiday. 
-
 ## Run
 
 ```bash
