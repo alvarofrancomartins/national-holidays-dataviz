@@ -74,7 +74,7 @@ for day in range(1, 32):
                     fontsize=13)
 
 # Horizontal gradient legend below the heatmap ("menos comum" → "mais comum").
-fig.subplots_adjust(bottom=0.18)
+fig.subplots_adjust(bottom=0.18, top=0.84)
 bbox = ax.get_position()
 gap = 0.03        # space between heatmap and the gradient bar
 grad_h = 0.02     # height of the gradient bar
@@ -93,5 +93,5 @@ fig.text(bbox.x1, label_y, "more common", ha="right", va="top", fontsize=16)
 
 fig.suptitle(f"Number of countries with a national holiday\n"
              f"on each day of the month ({len(codes)} countries, {YEAR})",
-             fontsize=20, y=0.99)
+             fontsize=20, y=0.99, fontweight="bold")
 plt.savefig("holidays_heatmap_2025.png", dpi=150, bbox_inches="tight")
