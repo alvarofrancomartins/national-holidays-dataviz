@@ -59,13 +59,12 @@ ax.tick_params(axis="x", rotation=0, bottom=False, top=True,
                length=0, labelsize=14)
 ax.tick_params(axis="y", rotation=0, length=0, labelsize=14)
 
-THRESHOLD = 30
 cmap = plt.get_cmap("magma_r")
 vmax = int(np.nanmax(df.values))
 for day in range(1, 32):
     for col, month in enumerate(MONTHS):
         v = df.loc[day, month]
-        if not np.isnan(v) and v >= THRESHOLD:
+        if not np.isnan(v):
             r, g, b, _ = cmap(v / vmax)
             luminance = 0.299 * r + 0.587 * g + 0.114 * b
             color = "white" if luminance < 0.5 else "#2d2d2d"
