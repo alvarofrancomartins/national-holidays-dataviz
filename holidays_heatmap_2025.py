@@ -42,7 +42,8 @@ for code in codes:
 matrix = np.full((31, 12), np.nan)
 for month in range(1, 13):
     for day in range(1, calendar.monthrange(YEAR, month)[1] + 1):
-        matrix[day - 1, month - 1] = counts.get((month, day), 0)
+        v = counts.get((month, day), 0)
+        matrix[day - 1, month - 1] = v if v > 0 else np.nan  # zero -> blank (white)
 
 df = pd.DataFrame(matrix, index=range(1, 32), columns=MONTHS)
 
@@ -92,5 +93,5 @@ fig.text(bbox.x1, label_y, "more common", ha="right", va="top", fontsize=16)
 
 fig.suptitle(f"Number of countries with a national holiday\n"
              f"on each day of the month ({len(codes)} countries, {YEAR})",
-             fontsize=20, y=0.99, fontweight="bold")
+             fontsize=20, y=0.96, fontweight="bold")
 plt.savefig("holidays_heatmap_2025.png", dpi=150, bbox_inches="tight")
